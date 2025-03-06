@@ -1,0 +1,117 @@
+{
+    "Malaria": {
+        "symptoms": [
+            "fever",
+            "chills",
+            "sweating",
+            "headache",
+            "muscle pain",
+            "nausea",
+            "vomiting",
+            "fatigue"
+        ],
+        "description": "A mosquito-borne disease caused by Plasmodium parasites, leading to fever and flu-like symptoms.",
+        "treatment": [
+            "Antimalarial drugs (e.g., Artemisinin-based combination therapy)",
+            "Hydration",
+            "Rest"
+        ]
+    },
+    "Diabetes": {
+        "symptoms": [
+            "frequent urination",
+            "excessive thirst",
+            "unexplained weight loss",
+            "fatigue",
+            "blurred vision",
+            "slow healing wounds"
+        ],
+        "description": "A metabolic disorder that affects blood sugar regulation.",
+        "treatment": [
+            "Insulin therapy",
+            "Dietary management",
+            "Physical exercise"
+        ]
+    },
+    "COVID-19": {
+        "symptoms": [
+            "fever",
+            "cough",
+            "shortness of breath",
+            "loss of taste",
+            "body aches",
+            "sore throat",
+            "fatigue"
+        ],
+        "description": "A viral respiratory disease caused by the SARS-CoV-2 virus.",
+        "treatment": [
+            "Supportive care",
+            "Oxygen therapy",
+            "Antiviral medication (if prescribed)"
+        ]
+    },
+    "Influenza": {
+        "symptoms": [
+            "fever",
+            "chills",
+            "sore throat",
+            "cough",
+            "fatigue",
+            "runny nose",
+            "muscle pain"
+        ],
+        "description": "A contagious respiratory infection caused by influenza viruses.",
+        "treatment": [
+            "Antiviral medication",
+            "Rest",
+            "Fluids"
+        ]
+    },
+    "Hypertension": {
+        "symptoms": [
+            "headache",
+            "dizziness",
+            "blurred vision",
+            "chest pain",
+            "shortness of breath",
+            "nosebleeds"
+        ],
+        "description": "A chronic condition in which blood pressure is consistently too high.",
+        "treatment": [
+            "Lifestyle changes",
+            "Antihypertensive medications",
+            "Regular monitoring"
+        ]
+    },
+    "Pneumonia": {
+        "symptoms": [
+            "fever",
+            "cough",
+            "shortness of breath",
+            "chest pain",
+            "fatigue",
+            "phlegm production"
+        ],
+        "description": "An infection that inflames the air sacs in one or both lungs.",
+        "treatment": [
+            "Antibiotics (if bacterial)",
+            "Antiviral medication",
+            "Oxygen therapy"
+        ]
+    },
+    "Tuberculosis": {
+        "symptoms": [
+            "chronic cough",
+            "weight loss",
+            "night sweats",
+            "fatigue",
+            "fever",
+            "coughing up blood"
+        ],
+        "description": "A bacterial infection that primarily affects the lungs.",
+        "treatment": [
+            "Antibiotic therapy (e.g., Isoniazid, Rifampin)",
+            "Prolonged treatment regimen"
+        ]
+    }
+}

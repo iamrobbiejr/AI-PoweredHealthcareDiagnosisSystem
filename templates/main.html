@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Diagnosis System</title>
+   <script src="https://cdn.tailwindcss.com"></script>
+      <link rel="apple-touch-icon" sizes="57x57" href="/static/assets/apple-icon-57x57.png">
+<link rel="apple-touch-icon" sizes="60x60" href="/static/assets/apple-icon-60x60.png">
+<link rel="apple-touch-icon" sizes="72x72" href="/static/assets/apple-icon-72x72.png">
+<link rel="apple-touch-icon" sizes="76x76" href="/static/assets/apple-icon-76x76.png">
+<link rel="apple-touch-icon" sizes="114x114" href="/static/assets/apple-icon-114x114.png">
+<link rel="apple-touch-icon" sizes="120x120" href="/static/assets/apple-icon-120x120.png">
+<link rel="apple-touch-icon" sizes="144x144" href="/static/assets/apple-icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="/static/assets/apple-icon-152x152.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/static/assets/apple-icon-180x180.png">
+<link rel="icon" type="image/png" sizes="192x192"  href="/static/assets/android-icon-192x192.png">
+<link rel="icon" type="image/png" sizes="32x32" href="/static/assets/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="96x96" href="/static/assets/favicon-96x96.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/static/assets/favicon-16x16.png">
+<link rel="manifest" href="/static/assets/manifest.json">
+<meta name="msapplication-TileColor" content="#ffffff">
+<meta name="msapplication-TileImage" content="/ms-icon-144x144.png">
+<meta name="theme-color" content="#ffffff">
+    <style>
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .spinner {
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid #3498db;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-br from-blue-500 to-purple-700 min-h-screen flex items-center justify-center p-4">
+   <div class="bg-gray-100 shadow-2xl rounded-2xl p-6 w-full max-w-8xl flex flex-col md:flex-row space-y-6 md:space-y-0 md:space-x-6">
+    <!-- Symptom Form -->
+    <div class="w-full md:w-1/3 bg-indigo-100 shadow-lg rounded-xl p-6">
+        <h2 class="text-lg font-bold text-center text-gray-800 mb-4">AI Health Diagnosis</h2>
+        <p class="text-gray-600 text-center mb-6">Select your symptoms and get a possible diagnosis.</p>
+
+       <form id="diagnosis-form" class="space-y-4">
+                    <!-- Category: General Symptoms -->
+            <label for="general-symptoms" class="block font-semibold text-indigo-800 my-2">General Symptoms</label>
+            <select id="general-symptoms" name="symptoms[]" class="w-full p-2 border rounded-lg">
+                <option value="">Select a symptom</option>
+                <option value="fever">Fever</option>
+                <option value="chills">Chills</option>
+                <option value="sweating">Excessive Sweating</option>
+                <option value="headache">Headache</option>
+                <option value="muscle pain">Muscle Pain</option>
+                <option value="nausea">Nausea</option>
+                <option value="vomiting">Vomiting</option>
+                <option value="fatigue">Fatigue</option>
+                <option value="unexplained weight loss">Unexplained Weight Loss</option>
+                <option value="slow healing wounds">Slow Healing Wounds</option>
+            </select>
+           <div class="grid mt-2 lg:grid-cols-2 grid-cols-1 space-x-1">
+               <div>
+                     <!-- Category: Respiratory Symptoms -->
+            <label class="block font-semibold text-indigo-800 my-2">Respiratory Symptoms</label>
+            <div class="space-y-2">
+                <label class="flex items-center">
+                    <input type="checkbox" name="symptoms[]" value="cough" class="mr-2"> Cough
+                </label>
+                <label class="flex items-center">
+                    <input type="checkbox" name="symptoms[]" value="chronic cough" class="mr-2"> Chronic Cough
+                </label>
+                <label class="flex items-center">
+                    <input type="checkbox" name="symptoms[]" value="shortness of breath" class="mr-2"> Shortness of Breath
+                </label>
+                <label class="flex items-center">
+                    <input type="checkbox" name="symptoms[]" value="chest tightness" class="mr-2"> Chest Tightness
+                </label>
+                <label class="flex items-center">
+                    <input type="checkbox" name="symptoms[]" value="phlegm production" class="mr-2"> Phlegm Production
+                </label>
+                <label class="flex items-center">
+                    <input type="checkbox" name="symptoms[]" value="coughing up blood" class="mr-2"> Coughing up Blood
+                </label>
+            </div>
+               </div>
+               <div>
+            <!-- Category: Gastrointestinal Symptoms -->
+            <label class="block font-semibold text-indigo-800 my-2">Gastrointestinal Symptoms</label>
+            <div class="space-y-2">
+                <label class="flex items-center">
+                    <input type="checkbox" name="symptoms[]" value="diarrhea" class="mr-2"> Diarrhea
+                </label>
+                <label class="flex items-center">
+                    <input type="checkbox" name="symptoms[]" value="vomiting" class="mr-2"> Vomiting
+                </label>
+                <label class="flex items-center">
+                    <input type="checkbox" name="symptoms[]" value="abdominal pain" class="mr-2"> Abdominal Pain
+                </label>
+            </div>
+               </div>
+           </div>
+
+            <div class="grid mt-2 lg:grid-cols-2 grid-cols-1 space-x-1">
+                <div>
+                      <!-- Category: Neurological Symptoms -->
+            <label class="block font-semibold text-indigo-800 my-2">Neurological Symptoms</label>
+            <div class="space-y-2">
+                <label class="flex items-center">
+                    <input type="checkbox" name="symptoms[]" value="dizziness" class="mr-2"> Dizziness
+                </label>
+                <label class="flex items-center">
+                    <input type="checkbox" name="symptoms[]" value="blurred vision" class="mr-2"> Blurred Vision
+                </label>
+            </div>
+                </div>
+                <div>
+                      <!-- Category: Pain Symptoms -->
+            <label class="block font-semibold text-indigo-800 my-2">Pain Symptoms</label>
+            <div class="space-y-2">
+                <label class="flex items-center">
+                    <input type="checkbox" name="symptoms[]" value="headache" class="mr-2"> Headache
+                </label>
+                <label class="flex items-center">
+                    <input type="checkbox" name="symptoms[]" value="joint pain" class="mr-2"> Joint Pain
+                </label>
+                <label class="flex items-center">
+                    <input type="checkbox" name="symptoms[]" value="muscle pain" class="mr-2"> Muscle Pain
+                </label>
+                <label class="flex items-center">
+                    <input type="checkbox" name="symptoms[]" value="chest pain" class="mr-2"> Chest Pain
+                </label>
+            </div>
+                </div>
+            </div>
+
+            <!-- Category: Urinary Symptoms -->
+            <label class="block font-semibold text-indigo-800 my-2">Urinary Symptoms</label>
+            <div class="space-y-2">
+                <label class="flex items-center">
+                    <input type="checkbox" name="symptoms[]" value="frequent urination" class="mr-2"> Frequent Urination
+                </label>
+                <label class="flex items-center">
+                    <input type="checkbox" name="symptoms[]" value="excessive thirst" class="mr-2"> Excessive Thirst
+                </label>
+            </div>
+
+            <button type="submit" class="w-full bg-blue-600 text-white p-3 rounded-lg shadow-lg hover:bg-blue-700 transition">Diagnose</button>
+        </form>
+    </div>
+
+    <!-- Diagnosis Result -->
+    <div id="result" class="w-full md:w-2/3 p-6 bg-indigo-100 rounded-lg shadow-md relative">
+        <div id="loading" class="flex justify-center items-center absolute w-full h-full top-0 left-0 bg-indigo-300 bg-opacity-75 hidden">
+            <div class="spinner"></div>
+        </div>
+        <h3 class="text-lg font-semibold text-center text-gray-700">Diagnosis Result</h3>
+        <p class="text-gray-600" id="diagnosis-output"></p>
+    </div>
+</div>
+
+
+    <script>
+        document.getElementById("diagnosis-form").addEventListener("submit", async function(event) {
+            event.preventDefault();
+           // Get selected general symptom from the dropdown
+    const generalSymptom = document.getElementById("general-symptoms").value;
+
+    // Get checked symptoms from checkboxes
+    const checkboxes = document.querySelectorAll("input[name='symptoms[]']:checked");
+    const selectedSymptoms = Array.from(checkboxes).map(cb => cb.value);
+
+     const loadingSpinner = document.getElementById("loading");
+
+    // Include the general symptom if selected
+    if (generalSymptom) {
+        selectedSymptoms.push(generalSymptom);
+    }
+
+    // Ensure symptoms are selected before making the request
+    if (selectedSymptoms.length === 0) {
+        alert("Please select at least one symptom.");
+        return;
+    }
+    console.log(selectedSymptoms);
+
+       loadingSpinner.classList.remove("hidden");
+        const outputDiv = document.getElementById("diagnosis-output");
+    outputDiv.innerHTML = "";
+
+      try {
+          await new Promise(resolve => setTimeout(resolve, 3000)); // Show loading for 3 seconds
+
+                const response = await fetch("/diagnose", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ symptoms: selectedSymptoms })
+                });
+
+                if (!response.ok) {
+                   alert("Failed to fetch diagnosis. Please try again later.");
+                }
+
+                const data = await response.json();
+                displayResults(data);
+                // Clear input after results are returned
+               document.getElementById("general-symptoms").value = "";
+                // Clear checkboxes
+        document.querySelectorAll("input[name='symptoms[]']:checked").forEach(checkbox => {
+            checkbox.checked = false;
+        });
+
+            } catch (error) {
+                alert(error.message);
+            }finally {
+                 loadingSpinner.classList.add("hidden");
+            }
+
+        });
+
+        // Function to display results
+        function displayResults(data) {
+    const resultDiv = document.getElementById("result");
+    const outputDiv = document.getElementById("diagnosis-output");
+    outputDiv.innerHTML = "";
+
+    if (Array.isArray(data) && data.length > 0) {
+        data.forEach(disease => {
+            const diseaseElement = document.createElement("div");
+            diseaseElement.classList.add("bg-gradient-to-r", "from-indigo-200", "to-indigo-400", "p-6", "rounded-xl", "shadow-lg", "relative",'my-2');
+
+            diseaseElement.innerHTML = `
+               <div class="absolute top-3 right-4 text-lg font-bold bg-blue-600 text-blue-100 shadow-md p-2 rounded-full text-center md:text-left md:inline-block">Confidence Score: ${disease.confidence}%</div>
+<h4 class="text-xl font-bold text-gray-800 text-center mt-8 md:text-left">${disease.disease}</h4>
+<p class="text-gray-600 italic text-center md:text-left">${disease.description}</p>
+<h5 class="text-lg font-semibold mt-3 text-center md:text-left">Symptoms:</h5>
+<p class="text-gray-700 text-center md:text-left">${disease.symptoms.join(", ")}</p>
+<h5 class="text-lg font-semibold mt-3 text-center md:text-left">Treatment:</h5>
+<ul class="list-disc list-inside text-gray-700 text-center md:text-left">${disease.treatment.map(t => `<li>${t}</li>`).join("")}</ul>
+<hr class="mt-4 border-gray-400">
+            `;
+            outputDiv.appendChild(diseaseElement);
+        });
+        resultDiv.classList.remove("hidden");
+    } else {
+        outputDiv.innerHTML = "<p class='text-red-500'>No strong match found. Please consult a doctor.</p>";
+        resultDiv.classList.remove("hidden");
+    }
+}
+    </script>
+</body>
+</html>
